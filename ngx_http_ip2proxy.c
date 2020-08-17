@@ -487,11 +487,11 @@ static ngx_http_ip2proxy_ctx_t *
 			ngx_str_t addr = p[0]->value;
 
             if (addr.len > (NGX_INET6_ADDRSTRLEN + 1)) {
-               fprintf(stderr, "=============addr.len: %zu vs %zu\n", addr.len, (NGX_INET6_ADDRSTRLEN + 1));
+               fprintf(stderr, "new=============addr.len: %zu vs %zu\n", addr.len, (NGX_INET6_ADDRSTRLEN + 1));
                u_char test_ip_addr[124];
                (void) ngx_copy((void *)test_ip_addr, addr.data, addr.len);
                test_ip_addr[addr.len] = '\0';
-               fprintf(stderr, "=============addr.data: %s\n", (char*)test_ip_addr);
+               fprintf(stderr, "new=============addr.data: %s\n", (char*)test_ip_addr);
             }
 
 			(void) ngx_copy((void *)ip_addr, addr.data, addr.len);
