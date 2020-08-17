@@ -485,6 +485,11 @@ static ngx_http_ip2proxy_ctx_t *
 		if (xfwd->nelts > 0 && cfg->reverse_proxy) {
 			ngx_table_elt_t **p = xfwd->elts;
 			ngx_str_t addr = p[0]->value;
+
+			if (addr.len > (NGX_INET6_ADDRSTRLEN + 1)) {
+				fprintf(stderr, "=============addr.len: %zu vs %zu\n", addr.len, (NGX_INET6_ADDRSTRLEN + 1));
+			}
+
 			(void) ngx_copy((void *)ip_addr, addr.data, addr.len);
 			ip_addr[addr.len] = '\0';
 		} else {
